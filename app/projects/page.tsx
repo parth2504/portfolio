@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ExternalLink, Github } from "lucide-react"
+import { Metadata } from 'next'
 
 import { PROJECTS } from "@/lib/constants"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
@@ -33,6 +34,11 @@ const itemVariants = {
   },
 }
 
+export const generateMetadata = async (): Promise<Metadata> => ({
+  title: 'Projects | Parth Dhameliya - Next.js & TypeScript Developer',
+  description: 'Explore frontend projects by Parth Dhameliya, a React and Next.js developer. Portfolio includes TypeScript, modern web technologies, and freelance frontend developer work in India.',
+})
+
 export default function ProjectsPage() {
   return (
     <div className="min-h-screen pt-16">
@@ -45,7 +51,7 @@ export default function ProjectsPage() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-              My <span className="gradient-text">Projects</span>
+              My <span className="gradient-text">Projects - React, Next.js & TypeScript Portfolio</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               A showcase of my recent work and technical achievements

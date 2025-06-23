@@ -83,6 +83,9 @@ export default function AboutPage() {
                   contributing to open-source projects, or sharing knowledge with the developer community. 
                   I believe in continuous learning and staying at the forefront of web development trends.
                 </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  I am a React developer with Next.js and TypeScript experience, available as a freelance frontend developer in India. If you are looking to hire a frontend developer in Ahmedabad, check out my portfolio.
+                </p>
               </div>
 
               {/* Values */}

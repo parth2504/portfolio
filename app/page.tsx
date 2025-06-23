@@ -4,6 +4,7 @@ import React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react"
+import { Metadata } from 'next'
 
 import { SITE_CONFIG } from "@/lib/constants"
 import { Button } from "@/components/ui/button"
@@ -31,6 +32,11 @@ const itemVariants = {
     },
   },
 }
+
+export const generateMetadata = async (): Promise<Metadata> => ({
+  title: 'Parth Dhameliya | Creative Frontend Developer & React Developer',
+  description: 'Portfolio of Parth Dhameliya, a frontend developer in Ahmedabad specializing in React, Next.js, and TypeScript. Hire a freelance frontend developer in India for high-performance web applications.',
+})
 
 export default function HomePage() {
   return (
@@ -60,12 +66,12 @@ export default function HomePage() {
               variants={itemVariants}
               className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-6"
             >
-              <span className="gradient-text">Parth Dhameliya</span>
+              <span className="gradient-text">Parth Dhameliya - Frontend & React Developer</span>
             </motion.h1>
 
             <motion.div variants={itemVariants} className="mb-8">
               <h2 className="text-2xl md:text-3xl font-heading font-medium text-muted-foreground mb-4">
-                Creative Frontend Developer
+                Creative Frontend Developer & Next.js Developer in Ahmedabad
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 I design and build beautiful, responsive, and high-performing web applications 

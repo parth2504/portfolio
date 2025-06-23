@@ -96,6 +96,18 @@ export default function RootLayout({
               "name": SITE_CONFIG.name,
               "url": SITE_CONFIG.url,
               "jobTitle": "Frontend Developer",
+              "knowsAbout": [
+                "React",
+                "Next.js",
+                "TypeScript",
+                "JavaScript",
+                "Tailwind CSS",
+                "Web Development"
+              ],
+              "alumniOf": {
+                "@type": "CollegeOrUniversity",
+                "name": "RK University"
+              },
               "worksFor": {
                 "@type": "Organization",
                 "name": "Inexture solution"
