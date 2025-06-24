@@ -20,6 +20,11 @@ export function Navbar() {
   const backgroundOpacity = useTransform(scrollY, [0, 100], [0.5, 0.9])
   const backdropBlur = useTransform(scrollY, [0, 100], [8, 12])
 
+  // Fix hydration error: only render after mount
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
+
   return (
     <motion.header
       className="fixed top-0 left-0 right-0 z-50"
