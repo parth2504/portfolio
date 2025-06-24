@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
   links: {
     github: 'https://github.com/parthdhameliya',
     linkedin: 'https://linkedin.com/in/parthdhameliya',
-    email: 'parth.dhameliya@example.com',
+    email: '2504parth@gmail.com',
   },
 };
 

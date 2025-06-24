@@ -7,22 +7,22 @@ import { usePathname } from "next/navigation"
 const pageVariants = {
   initial: {
     opacity: 0,
-    y: 20,
+    y: 10,
   },
   enter: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      ease: [0.21, 1.11, 0.81, 0.99],
+      duration: 0.3,
+      ease: "easeInOut",
     },
   },
   exit: {
     opacity: 0,
-    y: -20,
+    y: -10,
     transition: {
-      duration: 0.4,
-      ease: [0.21, 1.11, 0.81, 0.99],
+      duration: 0.2,
+      ease: "easeInOut",
     },
   },
 }

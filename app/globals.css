@@ -95,12 +95,15 @@
     @apply bg-black/10 backdrop-blur-md border border-white/10;
   }
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text text-transparent;
   }
   .animated-gradient {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
+  }
+  .nav-gradient {
+    @apply before:absolute before:inset-0 before:z-[-1] before:rounded-md before:bg-gradient-to-r before:from-purple-500 before:to-blue-500 before:opacity-80;
   }
 }
 

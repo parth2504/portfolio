@@ -1,26 +1,14 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
-
 import { SITE_CONFIG } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { Navbar } from "@/components/shared/navbar";
 import { Footer } from "@/components/shared/footer";
 import { PageTransition } from "@/components/shared/page-transition";
 import { Toaster } from "@/components/ui/sonner";
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-sans',
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-heading',
-});
-
 export const metadata: Metadata = {
+  metadataBase: new URL('https://parthdhameliya.vercel.app'),
   title: {
     default: SITE_CONFIG.title,
     template: `%s | ${SITE_CONFIG.name}`,
@@ -76,6 +64,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
   manifest: '/site.webmanifest',
 };
 
@@ -87,7 +80,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-      <meta name="google-site-verification" content="EuGygHRrEZWemHaHMR9VUb2A2PQc2SMMG41O4dzNBOs" />
+        <meta name="google-site-verification" content="EuGygHRrEZWemHaHMR9VUb2A2PQc2SMMG41O4dzNBOs" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -121,28 +117,18 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body 
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          inter.variable,
-          spaceGrotesk.variable
-        )}
-      >
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="relative flex min-h-screen flex-col">
+          <PageTransition>
             <Navbar />
-            <main className="flex-1">
-              <PageTransition>
-                {children}
-              </PageTransition>
-            </main>
+            {children}
             <Footer />
-          </div>
+          </PageTransition>
           <Toaster />
         </ThemeProvider>
       </body>

@@ -2,6 +2,7 @@
 
 import React from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ExternalLink, Github } from "lucide-react"
@@ -34,6 +35,8 @@ const itemVariants = {
 }
 
 export default function ProjectsClient() {
+  const router = useRouter();
+
   return (
     <div className="min-h-screen pt-16">
       <SectionWrapper>
@@ -52,6 +55,7 @@ export default function ProjectsClient() {
             </p>
           </motion.div>
 
+          {/* Projects Grid */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -119,24 +123,24 @@ export default function ProjectsClient() {
                   <CardFooter className="p-6 pt-0">
                     <div className="flex space-x-2 w-full">
                       <Button variant="outline" size="sm" className="flex-1" asChild>
-                        <Link
+                        <a
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           <ExternalLink className="h-4 w-4 mr-2" />
                           Live Demo
-                        </Link>
+                        </a>
                       </Button>
                       <Button variant="outline" size="sm" className="flex-1" asChild>
-                        <Link
+                        <a
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           <Github className="h-4 w-4 mr-2" />
                           Code
-                        </Link>
+                        </a>
                       </Button>
                     </div>
                   </CardFooter>
@@ -161,10 +165,11 @@ export default function ProjectsClient() {
                   I&apos;m always open to discussing new opportunities and interesting projects. 
                   Let&apos;s create something amazing together!
                 </p>
-                <Button size="lg" asChild>
-                  <Link href="/contact">
-                    Get In Touch
-                  </Link>
+                <Button 
+                  size="lg" 
+                  onClick={() => router.push('/contact/')}
+                >
+                  Get In Touch
                 </Button>
               </CardContent>
             </Card>
@@ -172,5 +177,5 @@ export default function ProjectsClient() {
         </div>
       </SectionWrapper>
     </div>
-  )
-} 
+  );
+}
