@@ -1,13 +1,8 @@
-"use client"
 import './globals.css';
 import type { Metadata } from 'next';
 import { SITE_CONFIG } from "@/lib/constants";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import { Navbar } from "@/components/shared/navbar";
-import { Footer } from "@/components/shared/footer";
-import { PageTransition } from "@/components/shared/page-transition";
-import { Toaster } from "@/components/ui/sonner";
 import { Inter, Space_Grotesk } from 'next/font/google';
+import AppShell from "@/components/shared/app-shell";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -132,19 +127,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <PageTransition>
-            <Navbar />
-            {children}
-            <Footer />
-          </PageTransition>
-          <Toaster />
-        </ThemeProvider>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
