@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/sonner";
 export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <div className="relative flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col antialiased">
         <Navbar />
         <PageTransition>{children}</PageTransition>
         <Footer />

@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation"
 const pageVariants = {
   initial: {
     opacity: 0,
-    y: 10,
+    y: 8,
   },
   enter: {
     opacity: 1,
@@ -19,7 +19,7 @@ const pageVariants = {
   },
   exit: {
     opacity: 0,
-    y: -10,
+    y: -8,
     transition: {
       duration: 0.2,
       ease: "easeInOut",
@@ -33,19 +33,27 @@ interface PageTransitionProps {
 
 export function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname()
+  const [isPresent, setIsPresent] = React.useState(true)
+
+  React.useEffect(() => {
+    setIsPresent(true)
+    return () => setIsPresent(false)
+  }, [pathname])
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.main
-        key={pathname}
-        variants={pageVariants}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        className="min-h-screen"
-      >
-        {children}
-      </motion.main>
+    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+      {isPresent && (
+        <motion.main
+          key={pathname}
+          variants={pageVariants}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          className="flex-1"
+        >
+          {children}
+        </motion.main>
+      )}
     </AnimatePresence>
   )
 }

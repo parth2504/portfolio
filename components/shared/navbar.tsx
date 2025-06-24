@@ -2,7 +2,7 @@
 
 import React from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Menu } from "lucide-react"
 
@@ -14,15 +14,20 @@ import { ThemeToggle } from "@/components/theme/theme-toggle"
 
 export function Navbar() {
   const pathname = usePathname()
+  const router = useRouter()
   const [isOpen, setIsOpen] = React.useState(false)
   const { scrollY } = useScroll()
   
   const backgroundOpacity = useTransform(scrollY, [0, 100], [0.5, 0.9])
   const backdropBlur = useTransform(scrollY, [0, 100], [8, 12])
 
-  const handleNavigation = React.useCallback(() => {
+  const handleNavigation = React.useCallback((href: string) => {
     setIsOpen(false)
-  }, [])
+    // Small delay to allow sheet animation to complete
+    setTimeout(() => {
+      router.push(href)
+    }, 100)
+  }, [router])
 
   return (
     <motion.header
@@ -37,11 +42,9 @@ export function Navbar() {
           <Button 
             variant="link" 
             className="font-heading text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 p-0"
-            asChild
+            onClick={() => handleNavigation("/")}
           >
-            <Link href="/" onClick={handleNavigation}>
-              {SITE_CONFIG.name}
-            </Link>
+            {SITE_CONFIG.name}
           </Button>
 
           {/* Desktop Navigation */}
@@ -56,11 +59,9 @@ export function Navbar() {
                     ? "text-white before:absolute before:inset-0 before:z-[-1] before:rounded-md before:bg-gradient-to-r before:from-purple-500 before:to-blue-500 before:opacity-80" 
                     : "text-gray-300 hover:text-white hover:bg-white/10"
                 )}
-                asChild
+                onClick={() => handleNavigation(link.href)}
               >
-                <Link href={link.href} onClick={handleNavigation}>
-                  {link.name}
-                </Link>
+                {link.name}
               </Button>
             ))}
             <div className="ml-2">
@@ -90,11 +91,9 @@ export function Navbar() {
                           ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white" 
                           : "text-gray-300 hover:text-white hover:bg-white/10"
                       )}
-                      asChild
+                      onClick={() => handleNavigation(link.href)}
                     >
-                      <Link href={link.href} onClick={handleNavigation}>
-                        {link.name}
-                      </Link>
+                      {link.name}
                     </Button>
                   ))}
                 </nav>
