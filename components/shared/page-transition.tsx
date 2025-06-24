@@ -35,7 +35,7 @@ export function PageTransition({ children }: PageTransitionProps) {
   const pathname = usePathname()
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={pathname}
         variants={pageVariants}
