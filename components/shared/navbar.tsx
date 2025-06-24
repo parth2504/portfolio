@@ -30,9 +30,14 @@ export function Navbar() {
     >
       <nav className="container mx-auto px-6 h-16">
         <div className="flex items-center justify-between h-full">
-          <Link href="/" className="font-heading text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600">
-            {SITE_CONFIG.name}
-          </Link>
+          <div className="cursor-pointer">
+            <Link
+              href="/"
+              className="font-heading text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+            >
+              {SITE_CONFIG.name}
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
