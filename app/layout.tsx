@@ -5,11 +5,14 @@ import AppShell from "@/components/shared/app-shell";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
+
   title: {
     default: SITE_CONFIG.title,
     template: `%s | ${SITE_CONFIG.name}`,
   },
+
   description: SITE_CONFIG.description,
+
   keywords: [
     'Frontend Developer',
     'React Developer',
@@ -20,8 +23,10 @@ export const metadata: Metadata = {
     'UI/UX',
     'Parth Dhameliya',
   ],
+
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
+
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -31,12 +36,14 @@ export const metadata: Metadata = {
     siteName: SITE_CONFIG.name,
     images: [{ url: SITE_CONFIG.ogImage, width: 1200, height: 630, alt: SITE_CONFIG.name }],
   },
+
   twitter: {
     card: 'summary_large_image',
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
     images: [SITE_CONFIG.ogImage],
   },
+
   robots: {
     index: true,
     follow: true,
@@ -48,12 +55,14 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-16x16.png',
     apple: '/apple-touch-icon.png',
   },
-  manifest: '/site.webmanifest',
+
+  manifest: '/site.webmanifest'
 };
 
 export default function RootLayout({
