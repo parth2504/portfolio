@@ -1,7 +1,8 @@
 import { MetadataRoute } from 'next';
+import { SITE_CONFIG } from '@/lib/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://your-domain.com'; // Replace with your actual domain
+  const baseUrl = SITE_CONFIG.url;
 
   return [
     { url: baseUrl, lastModified: new Date() },
@@ -10,4 +11,4 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/projects`, lastModified: new Date() },
     { url: `${baseUrl}/contact`, lastModified: new Date() },
   ];
-} 
+}

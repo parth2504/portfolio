@@ -58,7 +58,7 @@ export default function HomeClient() {
 
             <motion.h1
               variants={itemVariants}
-              className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6"
             >
               <span className="gradient-text">Parth Dhameliya - Frontend & React Developer</span>
             </motion.h1>
