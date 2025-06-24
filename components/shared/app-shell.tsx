@@ -9,12 +9,12 @@ import { Toaster } from "@/components/ui/sonner";
 export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+      <Navbar />
       <PageTransition>
-        <Navbar />
         {children}
-        <Footer />
       </PageTransition>
+      <Footer />
       <Toaster />
     </ThemeProvider>
   );
-} 
+}
