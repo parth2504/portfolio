@@ -78,13 +78,13 @@ export default function HomeClient() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
             >
               <Button size="lg" className="group" asChild>
-                <Link href="/projects">
+                <Link href="/projects" scroll={false}>
                   View My Work
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/contact">
+                <Link href="/contact" scroll={false}>
                   Get In Touch
                 </Link>
               </Button>
@@ -170,4 +170,4 @@ export default function HomeClient() {
       </SectionWrapper>
     </div>
   )
-} 
+}

@@ -35,7 +35,7 @@ export function Navbar() {
             className="font-heading text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 p-0"
             asChild
           >
-            <Link href="/">
+            <Link href="/" scroll={false}>
               {SITE_CONFIG.name}
             </Link>
           </Button>
@@ -54,7 +54,7 @@ export function Navbar() {
                 )}
                 asChild
               >
-                <Link href={link.href}>
+                <Link href={link.href} scroll={false}>
                   {link.name}
                 </Link>
               </Button>
@@ -89,7 +89,7 @@ export function Navbar() {
                       asChild
                       onClick={() => setIsOpen(false)}
                     >
-                      <Link href={link.href}>
+                      <Link href={link.href} scroll={false}>
                         {link.name}
                       </Link>
                     </Button>

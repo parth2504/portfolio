@@ -165,11 +165,10 @@ export default function ProjectsClient() {
                   I&apos;m always open to discussing new opportunities and interesting projects. 
                   Let&apos;s create something amazing together!
                 </p>
-                <Button 
-                  size="lg" 
-                  onClick={() => router.push('/contact/')}
-                >
-                  Get In Touch
+                <Button size="lg" asChild>
+                  <Link href="/contact" scroll={false}>
+                    Get In Touch
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
