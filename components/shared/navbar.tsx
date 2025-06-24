@@ -21,9 +21,13 @@ export function Navbar() {
   const backdropBlur = useTransform(scrollY, [0, 100], [8, 12])
 
   // Fix hydration error: only render after mount
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  const [mounted, setMounted] = React.useState(false)
+  React.useEffect(() => setMounted(true), [])
+  if (!mounted) return null
+
+  const handleNavigation = () => {
+    setIsOpen(false)
+  }
 
   return (
     <motion.header
@@ -40,7 +44,7 @@ export function Navbar() {
             className="font-heading text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 p-0"
             asChild
           >
-            <Link href="/" scroll={false}>
+            <Link href="/" onClick={handleNavigation}>
               {SITE_CONFIG.name}
             </Link>
           </Button>
@@ -59,7 +63,7 @@ export function Navbar() {
                 )}
                 asChild
               >
-                <Link href={link.href} scroll={false}>
+                <Link href={link.href} onClick={handleNavigation}>
                   {link.name}
                 </Link>
               </Button>
@@ -92,9 +96,9 @@ export function Navbar() {
                           : "text-gray-300 hover:text-white hover:bg-white/10"
                       )}
                       asChild
-                      onClick={() => setIsOpen(false)}
+                      onClick={handleNavigation}
                     >
-                      <Link href={link.href} scroll={false}>
+                      <Link href={link.href}>
                         {link.name}
                       </Link>
                     </Button>
