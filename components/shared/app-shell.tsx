@@ -8,12 +8,12 @@ import { Toaster } from "@/components/ui/sonner";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-      <Navbar />
-      <PageTransition>
-        {children}
-      </PageTransition>
-      <Footer />
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <div className="relative flex min-h-screen flex-col">
+        <Navbar />
+        <PageTransition>{children}</PageTransition>
+        <Footer />
+      </div>
       <Toaster />
     </ThemeProvider>
   );

@@ -36,15 +36,16 @@ export function PageTransition({ children }: PageTransitionProps) {
 
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <motion.div
+      <motion.main
         key={pathname}
         variants={pageVariants}
         initial="initial"
         animate="enter"
         exit="exit"
+        className="min-h-screen"
       >
         {children}
-      </motion.div>
+      </motion.main>
     </AnimatePresence>
   )
 }
