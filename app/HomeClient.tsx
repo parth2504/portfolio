@@ -3,7 +3,7 @@
 import React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowRight, Download, Github, Linkedin, Mail } from "lucide-react"
+import { ArrowRight, Github, Linkedin, Mail } from "lucide-react"
 
 import { SITE_CONFIG } from "@/lib/constants"
 import { Button } from "@/components/ui/button"

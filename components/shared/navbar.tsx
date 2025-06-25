@@ -1,8 +1,6 @@
 "use client"
 
 import React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Menu } from "lucide-react"
 
@@ -11,14 +9,23 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme/theme-toggle"
+import { useNavigation } from "@/hooks/use-navigation"
 
 export function Navbar() {
-  const pathname = usePathname()
   const [isOpen, setIsOpen] = React.useState(false)
+  const { currentPath, navigate } = useNavigation()
   const { scrollY } = useScroll()
   
   const backgroundOpacity = useTransform(scrollY, [0, 100], [0.5, 0.9])
   const backdropBlur = useTransform(scrollY, [0, 100], [8, 12])
+
+  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!(e.ctrlKey || e.metaKey)) {
+      e.preventDefault()
+      setIsOpen(false)
+      navigate(href)
+    }
+  }
 
   return (
     <motion.header
@@ -30,30 +37,30 @@ export function Navbar() {
     >
       <nav className="container mx-auto px-6 h-16">
         <div className="flex items-center justify-between h-full">
-          <div className="cursor-pointer">
-            <Link
-              href="/"
-              className="font-heading text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
-            >
-              {SITE_CONFIG.name}
-            </Link>
-          </div>
+          <a
+            href="/"
+            onClick={(e) => handleNavigation(e, "/")}
+            className="font-heading text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
+          >
+            {SITE_CONFIG.name}
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {NAVIGATION_LINKS.map((link) => (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleNavigation(e, link.href)}
                 className={cn(
                   "relative px-4 py-2 text-sm font-medium transition-colors rounded-md",
-                  pathname === link.href 
+                  currentPath === link.href 
                     ? "text-white before:absolute before:inset-0 before:z-[-1] before:rounded-md before:bg-gradient-to-r before:from-purple-500 before:to-blue-500 before:opacity-80" 
                     : "text-gray-300 hover:text-white hover:bg-white/10"
                 )}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
             <div className="ml-2">
               <ThemeToggle />
@@ -73,19 +80,19 @@ export function Navbar() {
               <SheetContent side="right" className="w-[80vw] sm:w-[385px] bg-black/95 border-gray-800">
                 <nav className="flex flex-col gap-4 mt-8">
                   {NAVIGATION_LINKS.map((link) => (
-                    <Link
+                    <a
                       key={link.href}
                       href={link.href}
-                      onClick={() => setIsOpen(false)}
+                      onClick={(e) => handleNavigation(e, link.href)}
                       className={cn(
                         "w-full px-4 py-2 text-lg font-medium rounded-md",
-                        pathname === link.href 
+                        currentPath === link.href 
                           ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white" 
                           : "text-gray-300 hover:text-white hover:bg-white/10"
                       )}
                     >
                       {link.name}
-                    </Link>
+                    </a>
                   ))}
                 </nav>
               </SheetContent>
