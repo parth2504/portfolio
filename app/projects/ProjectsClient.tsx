@@ -35,7 +35,7 @@ const itemVariants = {
 
 export default function ProjectsClient() {
   return (
-    <div className="min-h-screen pt-16">
+    <main className="min-h-screen pt-16">
       <SectionWrapper>
         <div className="container mx-auto px-4">
           <motion.div
@@ -45,26 +45,32 @@ export default function ProjectsClient() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-              My <span className="gradient-text">Projects - React, Next.js & TypeScript Portfolio</span>
+              My <span className="gradient-text">React & Next.js Portfolio Projects</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A showcase of my recent work and technical achievements
-            </p>
+            <div className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p itemProp="description">
+                Showcasing innovative web applications built with React, Next.js, and TypeScript. 
+                View my work as a Frontend Developer in Ahmedabad, specializing in modern web development.
+              </p>
+            </div>
           </motion.div>
 
-          {/* Projects Grid */}
-          <motion.div
+          <motion.section
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+            itemScope
+            itemType="http://schema.org/CollectionPage"
           >
             {PROJECTS.map((project) => (
-              <motion.div
+              <motion.article
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.2 }}
+                itemScope
+                itemType="http://schema.org/CreativeWork"
               >
                 <Card className="h-full overflow-hidden group">
                   <CardHeader className="p-0">
@@ -75,6 +81,7 @@ export default function ProjectsClient() {
                         width={400}
                         height={250}
                         className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                        itemProp="image"
                       />
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div className="flex space-x-2">
@@ -83,9 +90,11 @@ export default function ProjectsClient() {
                               href={project.liveUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              aria-label={`View ${project.title} live`}
+                              aria-label={`View ${project.title} live demo`}
+                              itemProp="url"
                             >
-                              <ExternalLink className="h-4 w-4" />
+                              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                              <span className="sr-only">View Live Demo</span>
                             </a>
                           </Button>
                           <Button size="sm" variant="secondary" asChild>
@@ -93,9 +102,11 @@ export default function ProjectsClient() {
                               href={project.githubUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              aria-label={`View ${project.title} source code`}
+                              aria-label={`View ${project.title} source code on GitHub`}
+                              itemProp="codeRepository"
                             >
-                              <Github className="h-4 w-4" />
+                              <Github className="h-4 w-4" aria-hidden="true" />
+                              <span className="sr-only">View Source Code</span>
                             </a>
                           </Button>
                         </div>
@@ -103,13 +114,13 @@ export default function ProjectsClient() {
                     </div>
                   </CardHeader>
                   <CardContent className="p-6">
-                    <h3 className="text-xl font-heading font-semibold mb-3 group-hover:text-primary transition-colors">
+                    <h2 className="text-xl font-heading font-semibold mb-3 group-hover:text-primary transition-colors" itemProp="name">
                       {project.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    </h2>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-4" itemProp="description">
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2" itemProp="keywords">
                       {project.tech.map((tech) => (
                         <Badge key={tech} variant="secondary" className="text-xs">
                           {tech}
@@ -117,14 +128,12 @@ export default function ProjectsClient() {
                       ))}
                     </div>
                   </CardContent>
-          
                 </Card>
-              </motion.div>
+              </motion.article>
             ))}
-          </motion.div>
+          </motion.section>
 
-          {/* CTA Section */}
-          <motion.div
+          <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -133,22 +142,22 @@ export default function ProjectsClient() {
             <Card className="max-w-2xl mx-auto">
               <CardContent className="p-8">
                 <h2 className="text-2xl font-heading font-semibold mb-4">
-                  Interested in Working Together?
+                  Looking for a Frontend Developer in Ahmedabad?
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  I&apos;m always open to discussing new opportunities and interesting projects. 
-                  Let&apos;s create something amazing together!
+                  I specialize in building modern web applications with React, Next.js, and TypeScript. 
+                  Let's discuss how I can help bring your project to life with clean code and optimal performance.
                 </p>
                 <Button size="lg" asChild>
-                  <Link href="/contact">
+                  <Link href="/contact" aria-label="Contact me for project inquiries">
                     Get In Touch
                   </Link>
                 </Button>
               </CardContent>
             </Card>
-          </motion.div>
+          </motion.section>
         </div>
       </SectionWrapper>
-    </div>
+    </main>
   )
 }

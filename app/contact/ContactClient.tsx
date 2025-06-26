@@ -68,7 +68,7 @@ export default function ContactClient() {
   }
 
   return (
-    <div className="min-h-screen pt-16">
+    <main className="min-h-screen pt-16" itemScope itemType="http://schema.org/ContactPage">
       <SectionWrapper>
         <div className="container mx-auto px-4">
           <motion.div
@@ -78,55 +78,70 @@ export default function ContactClient() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-              Get In <span className="gradient-text">Touch</span>
+              Contact <span className="gradient-text">Frontend Developer</span> in Ahmedabad
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Have a project in mind? Let&apos;s discuss how we can work together to bring your ideas to life.
-            </p>
+            <div className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p itemProp="description">
+                Looking for a React.js and Next.js expert in Gujarat? Let's discuss your web development 
+                needs and create exceptional digital experiences together.
+              </p>
+            </div>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Contact Information */}
-            <motion.div
+            <motion.section
               variants={containerVariants}
               initial="hidden"
               animate="visible"
               className="space-y-8"
+              itemScope
+              itemType="http://schema.org/Person"
             >
               <motion.div variants={itemVariants}>
                 <h2 className="text-2xl font-heading font-semibold mb-6">
-                  Let&apos;s Start a Conversation
+                  Frontend Development Services
                 </h2>
-                <p className="text-muted-foreground leading-relaxed mb-8">
-                  I&apos;m always excited to hear about new projects and opportunities. 
-                  Whether you&apos;re looking for a frontend developer, have a question about my work, 
-                  or just want to say hello, I&apos;d love to hear from you.
-                </p>
+                <div className="text-muted-foreground leading-relaxed mb-8 space-y-4">
+                  <p>
+                    Specializing in modern web development with React.js, Next.js, and TypeScript. 
+                    Available for projects in Ahmedabad and remote collaboration worldwide.
+                  </p>
+                  <ul className="list-none space-y-2">
+                    <li>✓ Custom React.js Application Development</li>
+                    <li>✓ Next.js Website Development</li>
+                    <li>✓ Frontend Performance Optimization</li>
+                    <li>✓ Responsive Web Design</li>
+                  </ul>
+                </div>
               </motion.div>
 
               <motion.div variants={itemVariants} className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Mail className="h-5 w-5 text-primary" />
+                    <Mail className="h-5 w-5 text-primary" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
                     <Link
                       href={`mailto:${SITE_CONFIG.links.email}`}
                       className="text-muted-foreground hover:text-primary transition-colors"
+                      itemProp="email"
                     >
                       {SITE_CONFIG.links.email}
                     </Link>
                   </div>
                 </div>
 
-                <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-4" itemProp="address" itemScope itemType="http://schema.org/PostalAddress">
                   <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <MapPin className="h-5 w-5 text-primary" />
+                    <MapPin className="h-5 w-5 text-primary" aria-hidden="true" />
                   </div>
                   <div>
                     <h3 className="font-semibold">Location</h3>
-                    <p className="text-muted-foreground">Gujarat, India</p>
+                    <p className="text-muted-foreground">
+                      <span itemProp="addressRegion">Gujarat</span>, 
+                      <span itemProp="addressCountry">India</span>
+                    </p>
                   </div>
                 </div>
 
@@ -174,20 +189,26 @@ export default function ContactClient() {
                   </Button>
                 </div>
               </motion.div>
-            </motion.div>
+            </motion.section>
 
-            {/* Contact Form */}
-            <motion.div
+            <motion.section
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              itemScope
+              itemType="http://schema.org/ContactPoint"
             >
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl font-heading">Send Message</CardTitle>
+                  <CardTitle className="text-xl font-heading">Project Inquiry</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <form 
+                    onSubmit={handleSubmit(onSubmit)} 
+                    className="space-y-6"
+                    itemProp="contactType"
+                    content="Project Inquiry Form"
+                  >
                     <div>
                       <Label htmlFor="name">Name *</Label>
                       <Input
@@ -195,9 +216,11 @@ export default function ContactClient() {
                         {...register("name")}
                         className="mt-2"
                         placeholder="Your full name"
+                        aria-required="true"
+                        itemProp="name"
                       />
                       {errors.name && (
-                        <p className="text-sm text-destructive mt-1">
+                        <p className="text-sm text-destructive mt-1" role="alert">
                           {errors.name.message}
                         </p>
                       )}
@@ -211,24 +234,27 @@ export default function ContactClient() {
                         {...register("email")}
                         className="mt-2"
                         placeholder="your.email@example.com"
+                        aria-required="true"
+                        itemProp="email"
                       />
                       {errors.email && (
-                        <p className="text-sm text-destructive mt-1">
+                        <p className="text-sm text-destructive mt-1" role="alert">
                           {errors.email.message}
                         </p>
                       )}
                     </div>
 
                     <div>
-                      <Label htmlFor="message">Message *</Label>
+                      <Label htmlFor="message">Project Details *</Label>
                       <Textarea
                         id="message"
                         {...register("message")}
                         className="mt-2 min-h-32"
-                        placeholder="Tell me about your project or say hello..."
+                        placeholder="Tell me about your project requirements..."
+                        aria-required="true"
                       />
                       {errors.message && (
-                        <p className="text-sm text-destructive mt-1">
+                        <p className="text-sm text-destructive mt-1" role="alert">
                           {errors.message.message}
                         </p>
                       )}
@@ -239,23 +265,24 @@ export default function ContactClient() {
                       size="lg"
                       className="w-full"
                       disabled={isSubmitting}
+                      aria-label={isSubmitting ? "Sending message..." : "Send project inquiry"}
                     >
                       {isSubmitting ? (
                         "Sending..."
                       ) : (
                         <>
-                          <Send className="h-4 w-4 mr-2" />
-                          Send Message
+                          <Send className="h-4 w-4 mr-2" aria-hidden="true" />
+                          Send Project Inquiry
                         </>
                       )}
                     </Button>
                   </form>
                 </CardContent>
               </Card>
-            </motion.div>
+            </motion.section>
           </div>
         </div>
       </SectionWrapper>
-    </div>
+    </main>
   )
 }

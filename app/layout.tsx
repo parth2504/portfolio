@@ -96,22 +96,48 @@ export default function RootLayout({
           id="structured-data"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: SITE_CONFIG.name,
-              url: SITE_CONFIG.url,
-              jobTitle: "Frontend Developer",
-              worksFor: {
-                "@type": "Organization",
-                name: "Inexture solution"
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                name: SITE_CONFIG.name,
+                url: SITE_CONFIG.url,
+                jobTitle: "Frontend Developer",
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Inexture solution"
+                },
+                alumniOf: {
+                  "@type": "CollegeOrUniversity",
+                  name: "RK University",
+                  location: "Gujarat, India"
+                },
+                knowsAbout: [
+                  "React",
+                  "Next.js",
+                  "TypeScript",
+                  "JavaScript",
+                  "Frontend Development",
+                  "Web Development"
+                ],
+                sameAs: [
+                  SITE_CONFIG.links.github,
+                  SITE_CONFIG.links.linkedin
+                ],
+                description: SITE_CONFIG.description
               },
-              sameAs: [
-                SITE_CONFIG.links.github,
-                SITE_CONFIG.links.linkedin
-              ],
-              description: SITE_CONFIG.description
-            })
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: SITE_CONFIG.title,
+                url: SITE_CONFIG.url,
+                description: SITE_CONFIG.description,
+                author: {
+                  "@type": "Person",
+                  name: SITE_CONFIG.name
+                }
+              }
+            ])
           }}
         />
       </head>

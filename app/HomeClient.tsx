@@ -41,7 +41,7 @@ export default function HomeClient() {
   }, [navigate])
 
   return (
-    <div className="min-h-screen">
+    <main className="min-h-screen">
       <SectionWrapper>
         <div className="container mx-auto px-4">
           <motion.div
@@ -52,7 +52,7 @@ export default function HomeClient() {
           >
             <motion.div variants={itemVariants} className="mb-8">
               <AnimatedShinyText className="text-sm font-medium text-muted-foreground border border-border/40 rounded-full px-4 py-2 bg-muted/50">
-                ✨ Welcome to my digital space
+                <span role="text" aria-label="Welcome message">✨ Welcome to my digital space</span>
               </AnimatedShinyText>
             </motion.div>
 
@@ -65,12 +65,17 @@ export default function HomeClient() {
 
             <motion.div variants={itemVariants} className="mb-8">
               <h2 className="text-2xl md:text-3xl font-heading font-medium text-muted-foreground mb-4">
-                Creative Frontend Developer & Next.js Developer in Ahmedabad
+                Creative Frontend Developer & Next.js Expert in Ahmedabad, Gujarat
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                I design and build beautiful, responsive, and high-performing web applications 
-                with a focus on user-centric solutions and modern technologies.
-              </p>
+              <div className="space-y-4">
+                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                  Specialized in building modern web applications using React.js, Next.js, and TypeScript. 
+                  Creating responsive, accessible, and high-performance digital experiences.
+                </p>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  <strong>Technologies:</strong> React, Next.js, TypeScript, Tailwind CSS, Redux, Node.js
+                </p>
+              </div>
             </motion.div>
 
             <motion.div 
@@ -82,15 +87,17 @@ export default function HomeClient() {
                   href="/projects" 
                   onClick={(e) => handleClick(e, "/projects")}
                   className="inline-flex items-center"
+                  aria-label="View my portfolio projects"
                 >
                   View My Work
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </a>
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <a 
                   href="/contact"
                   onClick={(e) => handleClick(e, "/contact")}
+                  aria-label="Contact me for work opportunities"
                 >
                   Get In Touch
                 </a>
@@ -100,6 +107,8 @@ export default function HomeClient() {
             <motion.div 
               variants={itemVariants}
               className="flex justify-center space-x-4"
+              role="navigation"
+              aria-label="Social links"
             >
               <Button variant="ghost" size="icon" className="rounded-full" asChild>
                 <a
@@ -130,9 +139,22 @@ export default function HomeClient() {
                 </a>
               </Button>
             </motion.div>
+
+            <motion.section 
+              variants={itemVariants}
+              className="mt-16 text-left bg-muted/30 rounded-lg p-6"
+              aria-label="Key achievements"
+            >
+              <h3 className="text-xl font-semibold mb-4">Recent Achievements</h3>
+              <ul className="space-y-3">
+                <li>🚀 Reduced load times by 40% through performance optimization</li>
+                <li>💼 Developed enterprise solutions for Dubai Pulse project</li>
+                <li>📈 Built high-frequency trading platform features</li>
+              </ul>
+            </motion.section>
           </motion.div>
         </div>
       </SectionWrapper>
-    </div>
+    </main>
   )
 }

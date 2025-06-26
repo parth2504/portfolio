@@ -40,7 +40,7 @@ const skillCategories = SKILLS.reduce((acc, skill) => {
 
 export default function AboutClient() {
   return (
-    <div className="min-h-screen pt-16">
+    <main className="min-h-screen pt-16">
       <SectionWrapper>
         <div className="container mx-auto px-4">
           <motion.div
@@ -52,39 +52,45 @@ export default function AboutClient() {
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
               About <span className="gradient-text">Me</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Passionate about creating exceptional digital experiences
-            </p>
+            <div className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p itemProp="description">
+                Frontend Developer in Ahmedabad specializing in React.js, Next.js, and TypeScript development
+              </p>
+            </div>
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Bio Section */}
-            <motion.div
+            <motion.article
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              itemScope
+              itemType="http://schema.org/Person"
             >
-              <h2 className="text-2xl font-heading font-semibold mb-6">My Story</h2>
+              <h2 className="text-2xl font-heading font-semibold mb-6">Professional Overview</h2>
               <div className="prose prose-neutral dark:prose-invert max-w-none">
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  As a creative and detail-oriented Frontend Developer with over 2 years of experience, 
-                  I specialize in building modern, responsive web applications that deliver exceptional 
-                  user experiences. My journey in web development began with a passion for combining 
-                  technical excellence with creative design.
+                <p className="text-muted-foreground leading-relaxed mb-4" itemProp="description">
+                  As a Frontend Developer with expertise in React.js and Next.js, I specialize in creating 
+                  high-performance web applications. Based in Ahmedabad, Gujarat, I bring 2+ years of 
+                  experience in developing enterprise-level solutions and optimizing web performance.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  I thrive on transforming complex problems into elegant, user-friendly solutions. 
-                  My expertise spans across the entire frontend development spectrum, from crafting 
-                  pixel-perfect interfaces to implementing complex state management and optimizing 
-                  application performance.
+                  My focus areas include modern JavaScript frameworks, responsive design, accessibility (WCAG), 
+                  and performance optimization. I've successfully delivered projects for clients in fintech, 
+                  e-commerce, and enterprise sectors.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  When I&apos;m not coding, you&apos;ll find me exploring the latest web technologies, 
-                  contributing to open-source projects, or sharing knowledge with the developer community. 
-                  I believe in continuous learning and staying at the forefront of web development trends.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  I am a React developer with Next.js and TypeScript experience, available as a freelance frontend developer in India. If you are looking to hire a frontend developer in Ahmedabad, check out my portfolio.
+                <div className="mt-6">
+                  <h3 className="text-xl font-semibold mb-4">Core Expertise</h3>
+                  <ul className="list-none space-y-3">
+                    <li>▶ Frontend Architecture & Development</li>
+                    <li>▶ React.js & Next.js Applications</li>
+                    <li>▶ Performance Optimization</li>
+                    <li>▶ Responsive & Mobile-First Design</li>
+                  </ul>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mt-6">
+                  Available for frontend development projects in Ahmedabad and remote opportunities worldwide. 
+                  Specialized in creating scalable React applications with modern tech stacks.
                 </p>
               </div>
 
@@ -122,15 +128,15 @@ export default function AboutClient() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
 
             {/* Skills Section */}
-            <motion.div
+            <motion.section
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h2 className="text-2xl font-heading font-semibold mb-6">Skills & Technologies</h2>
+              <h2 className="text-2xl font-heading font-semibold mb-6">Technical Proficiencies</h2>
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -142,7 +148,7 @@ export default function AboutClient() {
                     <Card>
                       <CardContent className="p-6">
                         <h3 className="font-medium mb-3 text-primary">{category}</h3>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-2" itemProp="knowsAbout">
                           {skills.map((skill) => (
                             <Badge
                               key={skill}
@@ -165,29 +171,32 @@ export default function AboutClient() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="mt-8"
+                itemProp="alumniOf"
+                itemScope
+                itemType="http://schema.org/CollegeOrUniversity"
               >
                 <h2 className="text-2xl font-heading font-semibold mb-6">Education</h2>
                 <Card>
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <GraduationCap className="h-6 w-6 text-primary" />
+                        <GraduationCap className="h-6 w-6 text-primary" aria-hidden="true" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold">{EDUCATION.degree}</h3>
-                        <p className="text-primary">{EDUCATION.institution}</p>
+                        <h3 className="font-semibold" itemProp="degreeName">{EDUCATION.degree}</h3>
+                        <p className="text-primary" itemProp="name">{EDUCATION.institution}</p>
                         <p className="text-sm text-muted-foreground">
-                          {EDUCATION.location} • Graduated {EDUCATION.year}
+                          <span itemProp="address">{EDUCATION.location}</span> • Graduated <span itemProp="endDate">{EDUCATION.year}</span>
                         </p>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
               </motion.div>
-            </motion.div>
+            </motion.section>
           </div>
         </div>
       </SectionWrapper>
-    </div>
+    </main>
   )
 }
