@@ -1,17 +1,23 @@
 'use client'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 export function useNavigation() {
+  const [mounted, setMounted] = useState(false)
   const [currentPath, setCurrentPath] = useState('/')
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const navigationInProgress = useRef(false)
 
   useEffect(() => {
-    const path = window.location.pathname
-    setCurrentPath(path)
+    setMounted(true)
+    setCurrentPath(window.location.pathname)
+  }, [])
 
+  useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(window.location.pathname)
+      if (!navigationInProgress.current) {
+        setCurrentPath(window.location.pathname)
+      }
     }
 
     window.addEventListener('popstate', handlePopState)
@@ -19,25 +25,28 @@ export function useNavigation() {
   }, [])
 
   const navigate = useCallback((href: string) => {
-    if (href === currentPath) return
-    
+    if (href === currentPath || navigationInProgress.current) return
+
+    navigationInProgress.current = true
     setIsTransitioning(true)
-    
-    // Try to use History API first
-    try {
-      window.history.pushState({}, '', href)
-      setCurrentPath(href)
-      // Force a page reload for static site
-      window.location.href = href
-    } catch (e) {
-      // Fallback to direct navigation
-      window.location.href = href
-    }
+    setCurrentPath(href)
+
+    // Perform the navigation in the next frame
+    requestAnimationFrame(() => {
+      try {
+        window.history.pushState({}, '', href)
+        window.location.href = href
+      } catch (error) {
+        navigationInProgress.current = false
+        setIsTransitioning(false)
+      }
+    })
   }, [currentPath])
 
   return {
-    currentPath,
+    currentPath: mounted ? currentPath : '/',
     isTransitioning,
-    navigate
+    navigate,
+    mounted
   }
 }

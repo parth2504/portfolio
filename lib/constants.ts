@@ -112,7 +112,7 @@ export const EXPERIENCE = {
 };
 
 export const EDUCATION = {
-  degree: 'Bachelor of Technology in Computer Engineering',
+  degree: 'Bachelor of Technology in IT Engineering',
   institution: 'RK University',
   year: '2023',
   location: 'Gujarat, India',

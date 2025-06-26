@@ -13,19 +13,21 @@ import { useNavigation } from "@/hooks/use-navigation"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
-  const { currentPath, navigate } = useNavigation()
+  const [hoveredPath, setHoveredPath] = React.useState<string | null>(null)
+  const { currentPath, navigate, mounted } = useNavigation()
   const { scrollY } = useScroll()
   
   const backgroundOpacity = useTransform(scrollY, [0, 100], [0.5, 0.9])
   const backdropBlur = useTransform(scrollY, [0, 100], [8, 12])
 
-  const handleNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavigation = React.useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (!(e.ctrlKey || e.metaKey)) {
       e.preventDefault()
       setIsOpen(false)
+      setHoveredPath(null)
       navigate(href)
     }
-  }
+  }, [navigate])
 
   return (
     <motion.header
@@ -37,31 +39,50 @@ export function Navbar() {
     >
       <nav className="container mx-auto px-6 h-16">
         <div className="flex items-center justify-between h-full">
-          <a
+          <motion.a
             href="/"
             onClick={(e) => handleNavigation(e, "/")}
             className="font-heading text-xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600"
           >
             {SITE_CONFIG.name}
-          </a>
+          </motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
-            {NAVIGATION_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavigation(e, link.href)}
-                className={cn(
-                  "relative px-4 py-2 text-sm font-medium transition-colors rounded-md",
-                  currentPath === link.href 
-                    ? "text-white before:absolute before:inset-0 before:z-[-1] before:rounded-md before:bg-gradient-to-r before:from-purple-500 before:to-blue-500 before:opacity-80" 
-                    : "text-gray-300 hover:text-white hover:bg-white/10"
-                )}
-              >
-                {link.name}
-              </a>
-            ))}
+            {NAVIGATION_LINKS.map((link) => {
+              const isActive = mounted && currentPath === link.href
+              const isHovered = hoveredPath === link.href
+              
+              return (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleNavigation(e, link.href)}
+                  onHoverStart={() => setHoveredPath(link.href)}
+                  onHoverEnd={() => setHoveredPath(null)}
+                  className={cn(
+                    "relative px-4 py-2 text-sm font-medium rounded-md select-none",
+                    isActive ? "text-white" : "text-gray-300"
+                  )}
+                  initial={{ backgroundColor: "transparent" }}
+                  animate={{ 
+                    backgroundColor: mounted ? (isActive 
+                      ? "rgba(139, 92, 246, 0.8)"
+                      : isHovered 
+                        ? "rgba(255, 255, 255, 0.1)" 
+                        : "transparent") : "transparent",
+                    color: (isActive || isHovered) ? "white" : undefined,
+                    scale: isHovered ? 1.02 : 1
+                  }}
+                  transition={{ 
+                    duration: 0.15,
+                    ease: "easeOut"
+                  }}
+                >
+                  {link.name}
+                </motion.a>
+              )
+            })}
             <div className="ml-2">
               <ThemeToggle />
             </div>
@@ -79,21 +100,40 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[80vw] sm:w-[385px] bg-black/95 border-gray-800">
                 <nav className="flex flex-col gap-4 mt-8">
-                  {NAVIGATION_LINKS.map((link) => (
-                    <a
-                      key={link.href}
-                      href={link.href}
-                      onClick={(e) => handleNavigation(e, link.href)}
-                      className={cn(
-                        "w-full px-4 py-2 text-lg font-medium rounded-md",
-                        currentPath === link.href 
-                          ? "bg-gradient-to-r from-purple-500 to-blue-500 text-white" 
-                          : "text-gray-300 hover:text-white hover:bg-white/10"
-                      )}
-                    >
-                      {link.name}
-                    </a>
-                  ))}
+                  {NAVIGATION_LINKS.map((link) => {
+                    const isActive = mounted && currentPath === link.href
+                    const isHovered = hoveredPath === link.href
+
+                    return (
+                      <motion.a
+                        key={link.href}
+                        href={link.href}
+                        onClick={(e) => handleNavigation(e, link.href)}
+                        onHoverStart={() => setHoveredPath(link.href)}
+                        onHoverEnd={() => setHoveredPath(null)}
+                        className={cn(
+                          "w-full px-4 py-2 text-lg font-medium rounded-md select-none",
+                          isActive ? "text-white" : "text-gray-300"
+                        )}
+                        initial={{ backgroundColor: "transparent" }}
+                        animate={{
+                          backgroundColor: mounted ? (isActive 
+                            ? "rgba(139, 92, 246, 0.8)"
+                            : isHovered 
+                              ? "rgba(255, 255, 255, 0.1)" 
+                              : "transparent") : "transparent",
+                          color: (isActive || isHovered) ? "white" : undefined,
+                          scale: isHovered ? 1.02 : 1
+                        }}
+                        transition={{ 
+                          duration: 0.15,
+                          ease: "easeOut"
+                        }}
+                      >
+                        {link.name}
+                      </motion.a>
+                    )
+                  })}
                 </nav>
               </SheetContent>
             </Sheet>
