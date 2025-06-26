@@ -146,7 +146,7 @@ export default function ProjectsClient() {
                 </h2>
                 <p className="text-muted-foreground mb-6">
                   I specialize in building modern web applications with React, Next.js, and TypeScript. 
-                  Let's discuss how I can help bring your project to life with clean code and optimal performance.
+                  Let&apos;s discuss how I can help bring your project to life with clean code and optimal performance.
                 </p>
                 <Button size="lg" asChild>
                   <Link href="/contact" aria-label="Contact me for project inquiries">

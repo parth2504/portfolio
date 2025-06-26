@@ -82,7 +82,7 @@ export default function ContactClient() {
             </h1>
             <div className="text-xl text-muted-foreground max-w-2xl mx-auto">
               <p itemProp="description">
-                Looking for a React.js and Next.js expert in Gujarat? Let's discuss your web development 
+                Looking for a React.js and Next.js expert in Gujarat? Let&apos;s discuss your web development 
                 needs and create exceptional digital experiences together.
               </p>
             </div>
