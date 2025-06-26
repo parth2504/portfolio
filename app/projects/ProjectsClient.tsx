@@ -1,9 +1,8 @@
 "use client"
 
 import React from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { ExternalLink, Github } from "lucide-react"
 
@@ -35,8 +34,6 @@ const itemVariants = {
 }
 
 export default function ProjectsClient() {
-  const router = useRouter();
-
   return (
     <div className="min-h-screen pt-16">
       <SectionWrapper>
@@ -82,24 +79,24 @@ export default function ProjectsClient() {
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div className="flex space-x-2">
                           <Button size="sm" variant="secondary" asChild>
-                            <Link
+                            <a
                               href={project.liveUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               aria-label={`View ${project.title} live`}
                             >
                               <ExternalLink className="h-4 w-4" />
-                            </Link>
+                            </a>
                           </Button>
                           <Button size="sm" variant="secondary" asChild>
-                            <Link
+                            <a
                               href={project.githubUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               aria-label={`View ${project.title} source code`}
                             >
                               <Github className="h-4 w-4" />
-                            </Link>
+                            </a>
                           </Button>
                         </div>
                       </div>
@@ -166,7 +163,7 @@ export default function ProjectsClient() {
                   Let&apos;s create something amazing together!
                 </p>
                 <Button size="lg" asChild>
-                  <Link href="/contact" scroll={false}>
+                  <Link href="/contact">
                     Get In Touch
                   </Link>
                 </Button>
@@ -176,5 +173,5 @@ export default function ProjectsClient() {
         </div>
       </SectionWrapper>
     </div>
-  );
+  )
 }

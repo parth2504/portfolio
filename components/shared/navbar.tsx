@@ -3,6 +3,7 @@
 import React from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Menu } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 import { NAVIGATION_LINKS, SITE_CONFIG } from "@/lib/constants"
 import { cn } from "@/lib/utils"
@@ -13,21 +14,26 @@ import { useNavigation } from "@/hooks/use-navigation"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
-  const [hoveredPath, setHoveredPath] = React.useState<string | null>(null)
-  const { currentPath, navigate, mounted } = useNavigation()
+  const pathname = usePathname()
+  const { navigate } = useNavigation()
   const { scrollY } = useScroll()
   
   const backgroundOpacity = useTransform(scrollY, [0, 100], [0.5, 0.9])
   const backdropBlur = useTransform(scrollY, [0, 100], [8, 12])
 
   const handleNavigation = React.useCallback((e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
     if (!(e.ctrlKey || e.metaKey)) {
-      e.preventDefault()
       setIsOpen(false)
-      setHoveredPath(null)
+      if (href === "/" && pathname === "/") {
+        // If already on home page, just prevent default
+        return
+      }
       navigate(href)
+    } else {
+      window.open(href, '_blank')
     }
-  }, [navigate])
+  }, [navigate, pathname])
 
   return (
     <motion.header
@@ -50,29 +56,25 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-1">
             {NAVIGATION_LINKS.map((link) => {
-              const isActive = mounted && currentPath === link.href
-              const isHovered = hoveredPath === link.href
+              const isActive = pathname === link.href
               
               return (
                 <motion.a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavigation(e, link.href)}
-                  onHoverStart={() => setHoveredPath(link.href)}
-                  onHoverEnd={() => setHoveredPath(null)}
                   className={cn(
                     "relative px-4 py-2 text-sm font-medium rounded-md select-none",
                     isActive ? "text-white" : "text-gray-300"
                   )}
-                  initial={{ backgroundColor: "transparent" }}
+                  initial={false}
                   animate={{ 
-                    backgroundColor: mounted ? (isActive 
-                      ? "rgba(139, 92, 246, 0.8)"
-                      : isHovered 
-                        ? "rgba(255, 255, 255, 0.1)" 
-                        : "transparent") : "transparent",
-                    color: (isActive || isHovered) ? "white" : undefined,
-                    scale: isHovered ? 1.02 : 1
+                    backgroundColor: isActive ? "rgba(139, 92, 246, 0.8)" : "transparent"
+                  }}
+                  whileHover={{
+                    backgroundColor: isActive ? "rgba(139, 92, 246, 0.9)" : "rgba(255, 255, 255, 0.1)",
+                    color: "white",
+                    scale: 1.02
                   }}
                   transition={{ 
                     duration: 0.15,
@@ -101,29 +103,25 @@ export function Navbar() {
               <SheetContent side="right" className="w-[80vw] sm:w-[385px] bg-black/95 border-gray-800">
                 <nav className="flex flex-col gap-4 mt-8">
                   {NAVIGATION_LINKS.map((link) => {
-                    const isActive = mounted && currentPath === link.href
-                    const isHovered = hoveredPath === link.href
+                    const isActive = pathname === link.href
 
                     return (
                       <motion.a
                         key={link.href}
                         href={link.href}
                         onClick={(e) => handleNavigation(e, link.href)}
-                        onHoverStart={() => setHoveredPath(link.href)}
-                        onHoverEnd={() => setHoveredPath(null)}
                         className={cn(
                           "w-full px-4 py-2 text-lg font-medium rounded-md select-none",
                           isActive ? "text-white" : "text-gray-300"
                         )}
-                        initial={{ backgroundColor: "transparent" }}
+                        initial={false}
                         animate={{
-                          backgroundColor: mounted ? (isActive 
-                            ? "rgba(139, 92, 246, 0.8)"
-                            : isHovered 
-                              ? "rgba(255, 255, 255, 0.1)" 
-                              : "transparent") : "transparent",
-                          color: (isActive || isHovered) ? "white" : undefined,
-                          scale: isHovered ? 1.02 : 1
+                          backgroundColor: isActive ? "rgba(139, 92, 246, 0.8)" : "transparent"
+                        }}
+                        whileHover={{
+                          backgroundColor: isActive ? "rgba(139, 92, 246, 0.9)" : "rgba(255, 255, 255, 0.1)",
+                          color: "white",
+                          scale: 1.02
                         }}
                         transition={{ 
                           duration: 0.15,

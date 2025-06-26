@@ -1,51 +1,43 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 
 export function useNavigation() {
   const [mounted, setMounted] = useState(false)
-  const [currentPath, setCurrentPath] = useState('/')
-  const [isTransitioning, setIsTransitioning] = useState(false)
-  const navigationInProgress = useRef(false)
+  const pathname = usePathname()
+  const router = useRouter()
+  const isNavigating = useRef(false)
+  const [currentPath, setCurrentPath] = useState(pathname || '/')
 
   useEffect(() => {
     setMounted(true)
-    setCurrentPath(window.location.pathname)
-  }, [])
-
-  useEffect(() => {
-    const handlePopState = () => {
-      if (!navigationInProgress.current) {
-        setCurrentPath(window.location.pathname)
-      }
+    if (pathname) {
+      setCurrentPath(pathname)
     }
-
-    window.addEventListener('popstate', handlePopState)
-    return () => window.removeEventListener('popstate', handlePopState)
-  }, [])
+  }, [pathname])
 
   const navigate = useCallback((href: string) => {
-    if (href === currentPath || navigationInProgress.current) return
+    if (isNavigating.current) return
 
-    navigationInProgress.current = true
-    setIsTransitioning(true)
+    isNavigating.current = true
     setCurrentPath(href)
 
-    // Perform the navigation in the next frame
-    requestAnimationFrame(() => {
-      try {
-        window.history.pushState({}, '', href)
-        window.location.href = href
-      } catch (error) {
-        navigationInProgress.current = false
-        setIsTransitioning(false)
-      }
-    })
-  }, [currentPath])
+    // Use Next.js router for navigation
+    try {
+      router.push(href)
+    } catch (error) {
+      window.location.href = href
+    } finally {
+      // Reset navigation lock after a short delay
+      setTimeout(() => {
+        isNavigating.current = false
+      }, 100)
+    }
+  }, [router])
 
   return {
-    currentPath: mounted ? currentPath : '/',
-    isTransitioning,
+    currentPath,
     navigate,
     mounted
   }
