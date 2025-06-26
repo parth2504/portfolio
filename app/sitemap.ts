@@ -6,12 +6,38 @@ export const revalidate = false;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = SITE_CONFIG.url;
+  const lastModified = new Date();
 
   return [
-    { url: baseUrl, lastModified: new Date() },
-    { url: `${baseUrl}/about`, lastModified: new Date() },
-    { url: `${baseUrl}/experience`, lastModified: new Date() },
-    { url: `${baseUrl}/projects`, lastModified: new Date() },
-    { url: `${baseUrl}/contact`, lastModified: new Date() },
+    {
+      url: baseUrl,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 1
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.9
+    },
+    {
+      url: `${baseUrl}/experience`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.6
+    },
   ];
 }

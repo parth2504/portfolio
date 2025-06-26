@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import { ExternalLink, Github } from "lucide-react"
 
 import { PROJECTS } from "@/lib/constants"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { SectionWrapper } from "@/components/shared/section-wrapper"

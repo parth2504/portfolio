@@ -1,7 +1,7 @@
 export const SITE_CONFIG = {
   name: 'Parth Dhameliya',
-  title: 'Parth Dhameliya - Creative Frontend Developer',
-  description: 'Creative Frontend Developer with 2+ years of experience building beautiful, responsive web applications using React, Next.js, and TypeScript.',
+  title: 'Parth Dhameliya | Senior Frontend Developer & React Expert',
+  description: 'Expert Frontend Developer specializing in React, Next.js, and TypeScript. Building high-performance, scalable web applications with modern tech stacks. View my portfolio of enterprise solutions.',
   url: 'https://parthdhameliya.vercel.app',
   ogImage: '/og-image.jpg',
   links: {
