@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 
 export function useNavigation() {
   const [mounted, setMounted] = useState(false)
+  const [isTransitioning, setIsTransitioning] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
   const isNavigating = useRef(false)
@@ -14,6 +15,7 @@ export function useNavigation() {
     setMounted(true)
     if (pathname) {
       setCurrentPath(pathname)
+      setIsTransitioning(false)
     }
   }, [pathname])
 
@@ -21,6 +23,7 @@ export function useNavigation() {
     if (isNavigating.current) return
 
     isNavigating.current = true
+    setIsTransitioning(true)
     setCurrentPath(href)
 
     // Use Next.js router for navigation
@@ -32,6 +35,7 @@ export function useNavigation() {
       // Reset navigation lock after a short delay
       setTimeout(() => {
         isNavigating.current = false
+        setIsTransitioning(false)
       }, 100)
     }
   }, [router])
@@ -39,6 +43,7 @@ export function useNavigation() {
   return {
     currentPath,
     navigate,
-    mounted
+    mounted,
+    isTransitioning
   }
 }
