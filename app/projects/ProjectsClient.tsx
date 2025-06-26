@@ -117,30 +117,7 @@ export default function ProjectsClient() {
                       ))}
                     </div>
                   </CardContent>
-                  <CardFooter className="p-6 pt-0">
-                    <div className="flex space-x-2 w-full">
-                      <Button variant="outline" size="sm" className="flex-1" asChild>
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          Live Demo
-                        </a>
-                      </Button>
-                      <Button variant="outline" size="sm" className="flex-1" asChild>
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <Github className="h-4 w-4 mr-2" />
-                          Code
-                        </a>
-                      </Button>
-                    </div>
-                  </CardFooter>
+          
                 </Card>
               </motion.div>
             ))}
