@@ -76,7 +76,7 @@ export default function AboutClient() {
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
                   My focus areas include modern JavaScript frameworks, responsive design, accessibility (WCAG), 
-                  and performance optimization. I've successfully delivered projects for clients in fintech, 
+                  and performance optimization. I&apos;ve successfully delivered projects for clients in fintech, 
                   e-commerce, and enterprise sectors.
                 </p>
                 <div className="mt-6">
