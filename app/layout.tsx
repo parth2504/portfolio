@@ -81,19 +81,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script 
-          src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js" 
-          id="wsAiSeoMb" 
-          strategy="afterInteractive"
-        />
-        <Script id="wsAiSeoInitScript" strategy="afterInteractive">
-          {`
-            wsSEOfixer.configure({
-              hostURL: 'https://seo-fixer.writesonic.com',
-              siteID: '6863791eb6799d80bf8ab730'
-            });
-          `}
-        </Script>
+       
+<Script src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js" id="wsAiSeoMb" strategy="beforeInteractive" />
+<script id="wsAiSeoInitScript">
+  {`
+    wsSEOfixer.configure({
+      hostURL: 'https://seo-fixer.writesonic.com',
+      siteID: '6863791eb6799d80bf8ab730',
+    });
+  `}
+</script>
         <Script id="handle-static-nav" strategy="beforeInteractive">
           {`
             (function() {
