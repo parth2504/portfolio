@@ -84,15 +84,7 @@ export const PROJECTS = [
     liveUrl: '#',
     githubUrl: '#',
   },
-  {
-    id: 6,
-    title: 'Developer Portfolio Website',
-    description: 'This very portfolio website built with modern web technologies, featuring animations and responsive design.',
-    image: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    liveUrl: '#',
-    githubUrl: '#',
-  },
+
 ];
 
 export const EXPERIENCE = {

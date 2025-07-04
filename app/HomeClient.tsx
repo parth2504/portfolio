@@ -65,7 +65,7 @@ export default function HomeClient() {
 
             <motion.div variants={itemVariants} className="mb-8">
               <h2 className="text-2xl md:text-3xl font-heading font-medium text-muted-foreground mb-4">
-                Creative Frontend Developer & Next.js Expert in Ahmedabad, Gujarat
+              Innovative Frontend Developer & Next.js Expert in Ahmedabad, Gujarat
               </h2>
               <div className="space-y-4">
                 <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -147,7 +147,7 @@ export default function HomeClient() {
             >
               <h3 className="text-xl font-semibold mb-4">Recent Achievements</h3>
               <ul className="space-y-3">
-                <li>🚀 Reduced load times by 40% through performance optimization</li>
+                <li>🚀 Reduced load times by 100% through performance optimization</li>
                 <li>💼 Developed enterprise solutions for Dubai Pulse project</li>
                 <li>📈 Built high-frequency trading platform features</li>
               </ul>
