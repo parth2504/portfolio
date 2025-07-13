@@ -54,8 +54,19 @@ export default function AboutClient() {
             </h1>
             <div className="text-xl text-muted-foreground max-w-2xl mx-auto">
               <p itemProp="description">
-                Frontend Developer in Ahmedabad specializing in React.js, Next.js, and TypeScript development
+                Dynamic Front-End Developer with 2+ years of experience building responsive web applications using React.js, Next.js, and TypeScript. Proven track record in performance optimization, achieving a 40% reduction in page load times and a 25% increase in user engagement. Skilled in state management, automated testing, and collaborating with cross-functional teams to deliver scalable, high-quality solutions.
               </p>
+            </div>
+            <div className="mt-8 max-w-2xl mx-auto">
+              <h2 className="text-xl font-semibold mb-4">Core Competencies</h2>
+              <ul className="list-disc list-inside text-left text-muted-foreground space-y-2">
+                <li>Front-End Development</li>
+                <li>Web Performance Optimization</li>
+                <li>Responsive UI Design</li>
+                <li>REST API Integration</li>
+                <li>Agile Scrum Collaboration</li>
+                <li>Testing Automation</li>
+              </ul>
             </div>
           </motion.div>
 
