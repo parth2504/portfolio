@@ -123,24 +123,24 @@ export default function ExperienceClient() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-12"
             >
-              <Card>
+              <Card className="bg-background/90 shadow-lg border border-border rounded-2xl">
                 <CardContent className="p-8">
-                  <h3 className="text-xl font-heading font-semibold mb-6 text-center">
-                    Technologies & Tools I Work With
+                  <h3 className="text-2xl font-heading font-bold mb-8 text-center text-primary">
+                    Technologies &amp; Tools I Work With
                   </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {[
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {[ 
                       'React.js', 'Next.js', 'TypeScript', 'JavaScript',
                       'Tailwind CSS', 'Material-UI', 'Redux', 'Zustand',
                       'Git', 'GitHub', 'Cypress', 'Node.js'
                     ].map((tech) => (
                       <motion.div
                         key={tech}
-                        className="text-center p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors"
+                        className="text-center p-3 rounded-xl bg-muted/80 text-foreground font-semibold text-lg shadow-sm border border-border hover:bg-[#6B26D9] hover:text-white transition-colors"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <p className="font-medium text-sm">{tech}</p>
+                        <p>{tech}</p>
                       </motion.div>
                     ))}
                   </div>

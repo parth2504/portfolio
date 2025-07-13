@@ -98,21 +98,21 @@ export default function ContactClient() {
               itemType="http://schema.org/Person"
             >
               <motion.div variants={itemVariants}>
-                <h2 className="text-2xl font-heading font-semibold mb-6">
-                  Frontend Development Services
-                </h2>
-                <div className="text-muted-foreground leading-relaxed mb-8 space-y-4">
-                  <p>
-                    Specializing in modern web development with React.js, Next.js, and TypeScript. 
-                    Available for projects in Ahmedabad and remote collaboration worldwide.
-                  </p>
-                  <ul className="list-none space-y-2">
-                    <li>✓ Custom React.js Application Development</li>
-                    <li>✓ Next.js Website Development</li>
-                    <li>✓ Frontend Performance Optimization</li>
-                    <li>✓ Responsive Web Design</li>
-                  </ul>
-                </div>
+              <h2 className="text-2xl font-heading font-bold mb-8 text-primary">
+                Frontend Development Services
+              </h2>
+              <div className="bg-background/90 shadow-lg border border-border rounded-2xl p-6 text-foreground leading-relaxed mb-8 space-y-4">
+                <p className="font-semibold text-lg">
+                  Specializing in modern web development with React.js, Next.js, and TypeScript.<br />
+                  Available for projects in Ahmedabad and remote collaboration worldwide.
+                </p>
+                <ul className="list-none space-y-3 text-base">
+                  <li className="bg-muted/80 rounded-xl px-4 py-2 border border-border font-medium transition-colors hover:bg-[#6B26D9] hover:text-white cursor-pointer">✓ Custom React.js Application Development</li>
+                  <li className="bg-muted/80 rounded-xl px-4 py-2 border border-border font-medium transition-colors hover:bg-[#6B26D9] hover:text-white cursor-pointer">✓ Next.js Website Development</li>
+                  <li className="bg-muted/80 rounded-xl px-4 py-2 border border-border font-medium transition-colors hover:bg-[#6B26D9] hover:text-white cursor-pointer">✓ Frontend Performance Optimization</li>
+                  <li className="bg-muted/80 rounded-xl px-4 py-2 border border-border font-medium transition-colors hover:bg-[#6B26D9] hover:text-white cursor-pointer">✓ Responsive Web Design</li>
+                </ul>
+              </div>
               </motion.div>
 
               <motion.div variants={itemVariants} className="space-y-6">
@@ -150,8 +150,9 @@ export default function ContactClient() {
                     <Phone className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">Response Time</h3>
-                    <p className="text-muted-foreground">Usually within 24 hours</p>
+                    <h3 className="font-semibold">Mobile:</h3>
+                    <p className="text-muted-foreground">+917990893386</p>
+                  
                   </div>
                 </div>
               </motion.div>
