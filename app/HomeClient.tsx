@@ -41,23 +41,16 @@ export default function HomeClient() {
   );
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-4xl mx-auto text-center pt-24 md:pt-32"
+            className="max-w-4xl mx-auto text-center pt-10 md:pt-16 lg:pt-20"
           >
-            <motion.div variants={itemVariants} className="mb-8">
-              <AnimatedShinyText className="text-sm font-medium text-muted-foreground border border-border/40 rounded-full px-4 py-2 bg-muted/50">
-                <span role="text" aria-label="Welcome message">
-                  ✨ Crafting Exceptional Digital Experiences with React and Next.js
-                </span>
-              </AnimatedShinyText>
-            </motion.div>
-            <motion.h1
+       <motion.h1
               variants={itemVariants}
               className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6"
             >
@@ -65,27 +58,27 @@ export default function HomeClient() {
                 Parth Dhameliya - Frontend Developer
               </span>
             </motion.h1>
-            <motion.div variants={itemVariants} className="mb-8">
-              <h2 className="text-2xl md:text-3xl font-heading font-medium text-muted-foreground mb-4">
-              Innovative Frontend Developer & Next.js Expert in Ahmedabad, Gujarat
+            <motion.div variants={itemVariants} className="mb-8 sm:mb-10 mt-6 sm:mt-10">
+              <AnimatedShinyText className="text-base font-medium text-foreground border border-border/40 rounded-full px-6 py-3 bg-muted/40 shadow-sm">
+                <span role="text" aria-label="Welcome message">
+                  ✨ Crafting Exceptional Digital Experiences with React and Next.js
+                </span>
+              </AnimatedShinyText>
+            </motion.div>
+            <motion.div variants={itemVariants} className="mb-10 sm:mb-12 mt-8 sm:mt-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-primary mb-4 sm:mb-6">
+                Innovative Frontend Developer with React & Next.js Expertise in Ahmedabad, Gujarat
               </h2>
-              <div className="space-y-4">
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  Specialized in performance optimization, state management with Zustand and Redux, and automated testing with Cypress. Achieved a 40% reduction in page load times and a 25% increase in user engagement.
+              <div className="space-y-4 sm:space-y-6 mt-4 sm:mt-6">
+                <p className="text-lg sm:text-xl md:text-2xl text-foreground max-w-2xl mx-auto leading-relaxed">
+                  Specialized in performance optimization, state management with Zustand and Redux, and automated testing with Cypress.<br />
+                  Achieved a <span className="font-bold text-primary">40% reduction</span> in page load times and a <span className="font-bold text-primary">25% increase</span> in user engagement.
                 </p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">React</span>
-                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Next.js</span>
-                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">TypeScript</span>
-                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Tailwind CSS</span>
-                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Redux</span>
-                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Node.js</span>
-                </div>
               </div>
             </motion.div>
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 sm:mb-20"
             >
               <Button size="lg" className="group" asChild>
                 <a
@@ -96,12 +89,12 @@ export default function HomeClient() {
                 >
                   View My Work
                   <ArrowRight
-                    className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform"
+                    className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform"
                     aria-hidden="true"
                   />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" className="px-6 py-3 text-base font-semibold border-primary text-primary hover:bg-primary/10 hover:text-primary" asChild>
                 <a
                   href="/contact"
                   onClick={(e) => handleClick(e, "/contact")}
@@ -113,14 +106,14 @@ export default function HomeClient() {
             </motion.div>
             <motion.div
               variants={itemVariants}
-              className="flex justify-center space-x-4"
+              className="flex justify-center gap-4 mt-8"
               role="navigation"
               aria-label="Social links"
             >
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full"
+                className="rounded-full border border-border hover:bg-primary/10 hover:text-primary"
                 asChild
               >
                 <a
@@ -135,7 +128,7 @@ export default function HomeClient() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full"
+                className="rounded-full border border-border  hover:bg-primary/10 hover:text-primary"
                 asChild
               >
                 <a
@@ -150,7 +143,7 @@ export default function HomeClient() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full"
+                className="rounded-full border border-border hover:bg-primary/10 hover:text-primary"
                 asChild
               >
                 <a
@@ -166,7 +159,7 @@ export default function HomeClient() {
               className="mt-16 text-left bg-muted/30 rounded-lg p-6"
               aria-label="Key achievements"
             >
-              <h3 className="text-xl font-semibold mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 text-primary">
                 Recent Achievements
               </h3>
               <ul className="space-y-3">

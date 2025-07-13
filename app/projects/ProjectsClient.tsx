@@ -83,34 +83,6 @@ export default function ProjectsClient() {
                         className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
                         itemProp="image"
                       />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="flex space-x-2">
-                          <Button size="sm" variant="secondary" asChild>
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`View ${project.title} live demo`}
-                              itemProp="url"
-                            >
-                              <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                              <span className="sr-only">View Live Demo</span>
-                            </a>
-                          </Button>
-                          <Button size="sm" variant="secondary" asChild>
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              aria-label={`View ${project.title} source code on GitHub`}
-                              itemProp="codeRepository"
-                            >
-                              <Github className="h-4 w-4" aria-hidden="true" />
-                              <span className="sr-only">View Source Code</span>
-                            </a>
-                          </Button>
-                        </div>
-                      </div>
                     </div>
                   </CardHeader>
                   <CardContent className="p-6">

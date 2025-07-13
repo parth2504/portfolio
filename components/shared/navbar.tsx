@@ -9,6 +9,7 @@ import { NAVIGATION_LINKS, SITE_CONFIG } from "@/lib/constants"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme/theme-toggle"
 import { useNavigation } from "@/hooks/use-navigation"
 
@@ -37,10 +38,11 @@ export function Navbar() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50"
+      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border"
       style={{
-        backgroundColor: `rgb(0 0 0 / ${backgroundOpacity})`,
-        backdropFilter: `blur(${backdropBlur}px)`,
+        // fallback for framer-motion scroll effect
+        backgroundColor: undefined,
+        backdropFilter: undefined,
       }}
     >
       <nav className="container mx-auto px-6 h-16">
@@ -57,26 +59,23 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-1">
             {NAVIGATION_LINKS.map((link) => {
               const isActive = pathname === link.href
-              
               return (
                 <motion.a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavigation(e, link.href)}
                   className={cn(
-                    "relative px-4 py-2 text-sm font-medium rounded-md select-none",
-                    isActive ? "text-white" : "text-gray-300"
+                    "relative px-4 py-2 text-sm font-medium rounded-md select-none transition-colors",
+                    isActive
+                      ? "bg-primary/10 text-primary"
+                      : "text-foreground hover:bg-muted/50 hover:text-primary"
                   )}
                   initial={false}
-                  animate={{ 
-                    backgroundColor: isActive ? "rgba(139, 92, 246, 0.8)" : "transparent"
-                  }}
+                  animate={{}}
                   whileHover={{
-                    backgroundColor: isActive ? "rgba(139, 92, 246, 0.9)" : "rgba(255, 255, 255, 0.1)",
-                    color: "white",
-                    scale: 1.02
+                    scale: 1.04
                   }}
-                  transition={{ 
+                  transition={{
                     duration: 0.15,
                     ease: "easeOut"
                   }}
@@ -100,30 +99,31 @@ export function Navbar() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[80vw] sm:w-[385px] bg-black/95 border-gray-800">
+              <SheetContent side="right" className="w-[80vw] sm:w-[385px] bg-background/95 border-border">
+                {/* Accessibility: Add SheetHeader and SheetTitle for DialogContent */}
+                <SheetHeader>
+                  <SheetTitle>Menu</SheetTitle>
+                </SheetHeader>
                 <nav className="flex flex-col gap-4 mt-8">
                   {NAVIGATION_LINKS.map((link) => {
                     const isActive = pathname === link.href
-
                     return (
                       <motion.a
                         key={link.href}
                         href={link.href}
                         onClick={(e) => handleNavigation(e, link.href)}
                         className={cn(
-                          "w-full px-4 py-2 text-lg font-medium rounded-md select-none",
-                          isActive ? "text-white" : "text-gray-300"
+                          "w-full px-4 py-2 text-lg font-medium rounded-md select-none transition-colors",
+                          isActive
+                            ? "bg-primary/10 text-primary"
+                            : "text-foreground hover:bg-muted/50 hover:text-primary"
                         )}
                         initial={false}
-                        animate={{
-                          backgroundColor: isActive ? "rgba(139, 92, 246, 0.8)" : "transparent"
-                        }}
+                        animate={{}}
                         whileHover={{
-                          backgroundColor: isActive ? "rgba(139, 92, 246, 0.9)" : "rgba(255, 255, 255, 0.1)",
-                          color: "white",
-                          scale: 1.02
+                          scale: 1.04
                         }}
-                        transition={{ 
+                        transition={{
                           duration: 0.15,
                           ease: "easeOut"
                         }}

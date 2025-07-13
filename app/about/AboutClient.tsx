@@ -147,24 +147,24 @@ export default function AboutClient() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              <h2 className="text-2xl font-heading font-semibold mb-6">Technical Proficiencies</h2>
+              <h2 className="text-2xl font-heading font-bold mb-8 text-primary">Technical Proficiencies</h2>
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="space-y-6"
+                className="space-y-8"
               >
                 {Object.entries(skillCategories).map(([category, skills]) => (
                   <motion.div key={category} variants={itemVariants}>
-                    <Card>
-                      <CardContent className="p-6">
-                        <h3 className="font-medium mb-3 text-primary">{category}</h3>
-                        <div className="flex flex-wrap gap-2" itemProp="knowsAbout">
+                    <Card className="bg-background/90 shadow-lg border border-border rounded-2xl">
+                      <CardContent className="p-8">
+                        <h3 className="font-semibold mb-6 text-primary text-lg">{category}</h3>
+                        <div className="flex flex-wrap gap-3">
                           {skills.map((skill) => (
                             <Badge
                               key={skill}
                               variant="secondary"
-                              className="hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                              className="bg-muted/80 text-foreground font-semibold text-base px-4 py-2 rounded-xl border border-border hover:bg-[#6B26D9] hover:text-white transition-colors cursor-default"
                             >
                               {skill}
                             </Badge>
