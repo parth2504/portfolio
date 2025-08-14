@@ -54,7 +54,7 @@ export default function AboutClient() {
             </h1>
             <div className="text-xl text-muted-foreground max-w-2xl mx-auto">
               <p itemProp="description">
-                Dynamic Front-End Developer with 2+ years of experience building responsive web applications using React.js, Next.js, and TypeScript. Proven track record in performance optimization, achieving a 40% reduction in page load times and a 25% increase in user engagement. Skilled in state management, automated testing, and collaborating with cross-functional teams to deliver scalable, high-quality solutions.
+                Dynamic Front-End Developer with 3.5+ years of experience building responsive web applications using React.js, Next.js, and TypeScript. Proven track record in performance optimization, achieving a 40% reduction in page load times and a 25% increase in user engagement. Skilled in state management, automated testing, and collaborating with cross-functional teams to deliver scalable, high-quality solutions.
               </p>
             </div>
             <div className="mt-8 max-w-2xl mx-auto">
@@ -82,7 +82,7 @@ export default function AboutClient() {
               <div className="prose prose-neutral dark:prose-invert max-w-none">
                 <p className="text-muted-foreground leading-relaxed mb-4" itemProp="description">
                   As a Frontend Developer with expertise in React.js and Next.js, I specialize in creating 
-                  high-performance web applications. Based in Ahmedabad, Gujarat, I bring 2+ years of 
+                  high-performance web applications. Based in Ahmedabad, Gujarat, I bring 3.5+ years of 
                   experience in developing enterprise-level solutions and optimizing web performance.
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
