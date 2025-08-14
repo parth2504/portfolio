@@ -44,7 +44,7 @@ export const PROJECTS = [
   {
     id: 1,
     title: "Omdia Tech Insights Platform",
-    description: `Contributed to the development and enhancement of the Omdia Tech platform, improving market research data accessibility for thousands of global users. Implemented performance optimizations, interactive dashboards, and responsive layouts using React.js and Next.js. Integrated APIs for real-time industry insights and ensured cross-browser compatibility for enterprise-level clients.`,
+    description: `Enhanced the global Omdia Tech market research platform, boosting data accessibility for 50,000+ monthly users across 20+ countries. Developed high-performance, responsive dashboards in React.js and Next.js, improving page load times by 40% and ensuring seamless cross-browser compatibility. Integrated RESTful APIs to deliver real-time industry insights, optimized rendering for large datasets (500k+ records), and implemented reusable UI components with Tailwind CSS, streamlining development by 25%.`,
     image:
       "https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800",
     tech: ["React.js", "Next.js", "REST API", "Tailwind CSS"],
