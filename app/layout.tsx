@@ -1,8 +1,8 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import Script from 'next/script'
-import { SITE_CONFIG } from "@/lib/constants"
-import AppShell from "@/components/shared/app-shell"
+import "./globals.css";
+import type { Metadata } from "next";
+import Script from "next/script";
+import { SITE_CONFIG } from "@/lib/constants";
+import AppShell from "@/components/shared/app-shell";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
@@ -12,41 +12,43 @@ export const metadata: Metadata = {
   },
   description: SITE_CONFIG.description,
   keywords: [
-    'Frontend Developer',
-    'React Developer',
-    'Next.js Developer',
-    'TypeScript Expert',
-    'JavaScript Developer',
-    'Web Development',
-    'UI/UX Engineer',
-    'React.js Specialist',
-    'Frontend Architecture',
-    'Performance Optimization',
-    'Modern Web Development',
-    'Parth Dhameliya',
+    "Frontend Developer",
+    "React Developer",
+    "Next.js Developer",
+    "TypeScript Expert",
+    "JavaScript Developer",
+    "Web Development",
+    "UI/UX Engineer",
+    "React.js Specialist",
+    "Frontend Architecture",
+    "Performance Optimization",
+    "Modern Web Development",
+    "Parth Dhameliya",
   ],
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
+    type: "website",
+    locale: "en_US",
     url: SITE_CONFIG.url,
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
     siteName: SITE_CONFIG.name,
-    images: [{ 
-      url: SITE_CONFIG.ogImage,
-      width: 1200,
-      height: 630,
-      alt: `${SITE_CONFIG.name} - Frontend Developer Portfolio`,
-    }],
+    images: [
+      {
+        url: SITE_CONFIG.ogImage,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_CONFIG.name} - Frontend Developer Portfolio`,
+      },
+    ],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: SITE_CONFIG.title,
     description: SITE_CONFIG.description,
     images: [SITE_CONFIG.ogImage],
-    creator: '@parthdhameliya',
+    creator: "@parthdhameliya",
   },
   robots: {
     index: true,
@@ -54,43 +56,46 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   verification: {
-    google: 'googleab25a4ee16668b01',
+    google: "googleab25a4ee16668b01",
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png',
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
   },
-  manifest: '/site.webmanifest',
+  manifest: "/site.webmanifest",
   alternates: {
     canonical: SITE_CONFIG.url,
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-       
-<Script src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js" id="wsAiSeoMb" strategy="beforeInteractive" />
-<script id="wsAiSeoInitScript">
-  {`
+        <Script
+          src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js"
+          id="wsAiSeoMb"
+          strategy="beforeInteractive"
+        />
+        <Script id="wsAiSeoInitScript" strategy="beforeInteractive">
+          {`
     wsSEOfixer.configure({
       hostURL: 'https://seo-fixer.writesonic.com',
       siteID: '6863791eb6799d80bf8ab730',
     });
   `}
-</script>
+        </Script>
         <Script id="handle-static-nav" strategy="beforeInteractive">
           {`
             (function() {
@@ -115,12 +120,12 @@ export default function RootLayout({
                 jobTitle: "Frontend Developer",
                 worksFor: {
                   "@type": "Organization",
-                  name: "Inexture solution"
+                  name: "Marelab Services",
                 },
                 alumniOf: {
                   "@type": "CollegeOrUniversity",
                   name: "RK University",
-                  location: "Gujarat, India"
+                  location: "Gujarat, India",
                 },
                 knowsAbout: [
                   "React",
@@ -128,13 +133,10 @@ export default function RootLayout({
                   "TypeScript",
                   "JavaScript",
                   "Frontend Development",
-                  "Web Development"
+                  "Web Development",
                 ],
-                sameAs: [
-                  SITE_CONFIG.links.github,
-                  SITE_CONFIG.links.linkedin
-                ],
-                description: SITE_CONFIG.description
+                sameAs: [SITE_CONFIG.links.github, SITE_CONFIG.links.linkedin],
+                description: SITE_CONFIG.description,
               },
               {
                 "@context": "https://schema.org",
@@ -144,10 +146,10 @@ export default function RootLayout({
                 description: SITE_CONFIG.description,
                 author: {
                   "@type": "Person",
-                  name: SITE_CONFIG.name
-                }
-              }
-            ])
+                  name: SITE_CONFIG.name,
+                },
+              },
+            ]),
           }}
         />
       </head>
@@ -155,5 +157,5 @@ export default function RootLayout({
         <AppShell>{children}</AppShell>
       </body>
     </html>
-  )
+  );
 }

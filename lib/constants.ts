@@ -121,9 +121,9 @@ export const PROJECTS = [
 ];
 
 export const EXPERIENCE = {
-  company: "Inexture solution",
+  company: "Marelab Services",
   role: "Frontend Developer",
-  duration: "jan 2023 – Present",
+  duration: "jun 2022 – Present",
   responsibilities: [
     "Developed responsive web applications using React.js, Next.js, and TypeScript, increasing user engagement by 25% for platforms with 500+ daily users.",
     "Engineered a Liferay-based React extension for Dubai Pulse, enhancing platform functionality by 30% and supporting 1,000+ concurrent users.",
