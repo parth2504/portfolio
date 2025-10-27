@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import React from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { motion } from "framer-motion"
-import { ExternalLink, Github } from "lucide-react"
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ExternalLink, Github } from "lucide-react";
 
-import { PROJECTS } from "@/lib/constants"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { SectionWrapper } from "@/components/shared/section-wrapper"
+import { PROJECTS } from "@/lib/constants";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { SectionWrapper } from "@/components/shared/section-wrapper";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -20,7 +20,7 @@ const containerVariants = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -31,7 +31,7 @@ const itemVariants = {
       duration: 0.6,
     },
   },
-}
+};
 
 export default function ProjectsClient() {
   return (
@@ -45,12 +45,16 @@ export default function ProjectsClient() {
             className="text-center mb-16"
           >
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-6">
-              My <span className="gradient-text">React & Next.js Portfolio Projects</span>
+              My{" "}
+              <span className="gradient-text">
+                React & Next.js Portfolio Projects
+              </span>
             </h1>
             <div className="text-xl text-muted-foreground max-w-2xl mx-auto">
               <p itemProp="description">
-                Showcasing innovative web applications built with React, Next.js, and TypeScript. 
-                View my work as a Frontend Developer in Ahmedabad, specializing in modern web development.
+                Showcasing innovative web applications built with React,
+                Next.js, and TypeScript. View my work as a Frontend Developer in
+                Ahmedabad, specializing in modern web development.
               </p>
             </div>
           </motion.div>
@@ -72,8 +76,8 @@ export default function ProjectsClient() {
                 itemScope
                 itemType="http://schema.org/CreativeWork"
               >
-                <Card className="h-full overflow-hidden group">
-                  <CardHeader className="p-0">
+                <Card className="h-full min-h-[500px] flex flex-col overflow-hidden group">
+                  <CardHeader className="p-0 shrink-0">
                     <div className="relative overflow-hidden rounded-t-lg">
                       <Image
                         src={project.image}
@@ -85,16 +89,31 @@ export default function ProjectsClient() {
                       />
                     </div>
                   </CardHeader>
-                  <CardContent className="p-6">
-                    <h2 className="text-xl font-heading font-semibold mb-3 group-hover:text-primary transition-colors" itemProp="name">
+                  <CardContent className="flex flex-col flex-1 p-6">
+                    <h2
+                      className="text-xl font-heading font-semibold mb-3 group-hover:text-primary transition-colors"
+                      itemProp="name"
+                    >
                       {project.title}
                     </h2>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4" itemProp="description">
+                    <p
+                      className="text-muted-foreground text-sm leading-relaxed"
+                      itemProp="description"
+                    >
                       {project.description}
                     </p>
-                    <div className="flex flex-wrap gap-2" itemProp="keywords">
+                    <div className="flex-grow"></div>{" "}
+                    {/* This pushes badges down */}
+                    <div
+                      className="flex flex-wrap gap-2 mt-4"
+                      itemProp="keywords"
+                    >
                       {project.tech.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="text-xs">
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="text-xs"
+                        >
                           {tech}
                         </Badge>
                       ))}
@@ -117,11 +136,16 @@ export default function ProjectsClient() {
                   Looking for a Frontend Developer in Ahmedabad?
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  I specialize in building modern web applications with React, Next.js, and TypeScript. 
-                  Let&apos;s discuss how I can help bring your project to life with clean code and optimal performance.
+                  I specialize in building modern web applications with React,
+                  Next.js, and TypeScript. Let&apos;s discuss how I can help
+                  bring your project to life with clean code and optimal
+                  performance.
                 </p>
                 <Button size="lg" asChild>
-                  <Link href="/contact" aria-label="Contact me for project inquiries">
+                  <Link
+                    href="/contact"
+                    aria-label="Contact me for project inquiries"
+                  >
                     Get In Touch
                   </Link>
                 </Button>
@@ -131,5 +155,5 @@ export default function ProjectsClient() {
         </div>
       </SectionWrapper>
     </main>
-  )
+  );
 }
