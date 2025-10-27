@@ -50,7 +50,7 @@ export default function HomeClient() {
             animate="visible"
             className="max-w-4xl mx-auto text-center pt-10 md:pt-16 lg:pt-20"
           >
-       <motion.h1
+            <motion.h1
               variants={itemVariants}
               className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold mb-6"
             >
@@ -58,21 +58,37 @@ export default function HomeClient() {
                 Parth Dhameliya - Frontend Developer
               </span>
             </motion.h1>
-            <motion.div variants={itemVariants} className="mb-8 sm:mb-10 mt-6 sm:mt-10">
+            <motion.div
+              variants={itemVariants}
+              className="mb-8 sm:mb-10 mt-6 sm:mt-10"
+            >
               <AnimatedShinyText className="text-base font-medium text-foreground border border-border/40 rounded-full px-6 py-3 bg-muted/40 shadow-sm">
                 <span role="text" aria-label="Welcome message">
-                  ✨ Crafting Exceptional Digital Experiences with React and Next.js
+                  ✨ Crafting Exceptional Digital Experiences with React and
+                  Next.js
                 </span>
               </AnimatedShinyText>
             </motion.div>
-            <motion.div variants={itemVariants} className="mb-10 sm:mb-12 mt-8 sm:mt-12">
+            <motion.div
+              variants={itemVariants}
+              className="mb-10 sm:mb-12 mt-8 sm:mt-12"
+            >
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-primary mb-4 sm:mb-6">
-                Innovative Frontend Developer with React & Next.js Expertise in Ahmedabad, Gujarat
+                Innovative Frontend Developer with React & Next.js Expertise in
+                Ahmedabad, Gujarat
               </h2>
               <div className="space-y-4 sm:space-y-6 mt-4 sm:mt-6">
                 <p className="text-lg sm:text-xl md:text-2xl text-foreground max-w-2xl mx-auto leading-relaxed">
-                  Specialized in performance optimization, state management with Zustand and Redux, and automated testing with Cypress.<br />
-                  Achieved a <span className="font-bold text-primary">40% reduction</span> in page load times and a <span className="font-bold text-primary">25% increase</span> in user engagement.
+                  Specialized in performance optimization, state management with
+                  Zustand and Redux, and automated testing with Cypress.
+                  <br />
+                  Achieved a{" "}
+                  <span className="font-bold text-primary">
+                    40% reduction
+                  </span>{" "}
+                  in page load times and a{" "}
+                  <span className="font-bold text-primary">25% increase</span>{" "}
+                  in user engagement.
                 </p>
               </div>
             </motion.div>
@@ -94,7 +110,12 @@ export default function HomeClient() {
                   />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="px-6 py-3 text-base font-semibold border-primary text-primary hover:bg-primary/10 hover:text-primary" asChild>
+              <Button
+                size="lg"
+                variant="outline"
+                className="px-6 py-3 text-base font-semibold border-primary text-primary hover:bg-primary/10 hover:text-primary"
+                asChild
+              >
                 <a
                   href="/contact"
                   onClick={(e) => handleClick(e, "/contact")}
@@ -163,9 +184,22 @@ export default function HomeClient() {
                 Recent Achievements
               </h3>
               <ul className="space-y-3">
-                <li>🚀 Reduced load times by 40% through performance optimization</li>
-                <li>💼 Developed enterprise solutions for Dubai Pulse project, enhancing platform functionality by 30%</li>
-                <li>📈 Built high-frequency trading platform features, boosting user retention by 25%</li>
+                <li>
+                  🚀 Reduced load times by 40% through performance optimization
+                </li>
+                <li>
+                  💼 Developed enterprise solutions for Dubai Pulse project,
+                  enhancing platform functionality by 30%
+                </li>
+                <li>
+                  📈 Built high-frequency trading platform features, boosting
+                  user retention by 25%
+                </li>
+                <li>
+                  🤖 Mastered AI-powered tools (Cursor, Lovable, GitHub
+                  Copilot, Trae), boosting productivity by 50% and enabling delivery
+                  of high-quality features at an accelerated pace.
+                </li>
               </ul>
             </motion.section>
           </motion.div>
