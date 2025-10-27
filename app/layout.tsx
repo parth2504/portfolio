@@ -80,22 +80,32 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Only enable the Writesonic SEO fixer in production or when explicitly enabled.
+  // This avoids the fixer attempting to fetch data for localhost during development
+  // which results in 404s from the remote service.
+  const enableSeoFixer =
+    process.env.NEXT_PUBLIC_WS_SEO_FIXER === "true" &&
+    !SITE_CONFIG.url.includes("localhost");
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js"
-          id="wsAiSeoMb"
-          strategy="beforeInteractive"
-        />
-        <Script id="wsAiSeoInitScript" strategy="beforeInteractive">
-          {`
+        {enableSeoFixer && (
+          <>
+            <Script
+              src="https://seo-fixer.writesonic.com/site-audit/fixer-script/index.js"
+              id="wsAiSeoMb"
+              strategy="beforeInteractive"
+            />
+            <Script id="wsAiSeoInitScript" strategy="beforeInteractive">
+              {`
     wsSEOfixer.configure({
       hostURL: 'https://seo-fixer.writesonic.com',
       siteID: '6863791eb6799d80bf8ab730',
     });
   `}
-        </Script>
+            </Script>
+          </>
+        )}
         <Script id="handle-static-nav" strategy="beforeInteractive">
           {`
             (function() {
